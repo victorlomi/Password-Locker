@@ -6,9 +6,9 @@ class Credentials():
         self.accounts = {"twitter": {}};
 
     def add_account(self, account):
-        """Add an account and its credentials to the accounts"""
+        """Add an account and its credentials to the accounts."""
         pass
 
     def remove_account(self, account):
-        """Remove an account and its credentials to the accounts"""
+        """Remove an account and its credentials to the accounts."""
         pass
