@@ -19,6 +19,5 @@ class TestCredentials(unittest.TestCase):
         self.assertFalse("twitter" in credentials)
 
 
-
 unittest.main()
 
