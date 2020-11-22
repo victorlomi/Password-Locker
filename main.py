@@ -1,15 +1,15 @@
 from credentials import Credentials
 from user import User
+from banners import Banners
 
+banners = Banners()
 credentials = Credentials()
 user = User()
 
 def show_main_menu():
     # show the main menu banner
-    print("\n****************************************************")
-    print("******************* Main Menu  *********************")
-    print("****************************************************")
-
+    banners.show_main_menu()
+    
     # print out the available accounts
     print("Accounts:")
     i = 0
@@ -22,14 +22,9 @@ def show_main_menu():
     print("  a.Add Account")
     print("  b.Remove Account")
 
-def show_title_card():
-    print("****************************************************")
-    print("********** Welcome to Password Locker!  ************")
-    print("* The best and simplest password manager available *")
-    print("****************************************************")
 
 # Only show this card at the start of the program
-show_title_card()
+banners.show_title()
 
 # main application loop
 while True:
