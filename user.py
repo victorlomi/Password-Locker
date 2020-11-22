@@ -7,6 +7,10 @@ class User():
         """Store credentials"""
         self.credentials = Credentials()
 
+    def get_account_name(self, index):
+        account_keys = list(self.credentials.accounts.keys())
+        return account_keys[index]
+
     def view_account(self):
         """View a specific account's details and actions"""
         pass

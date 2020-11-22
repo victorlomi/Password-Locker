@@ -1,6 +1,8 @@
 from credentials import Credentials
+from user import User
 
 credentials = Credentials()
+user = User()
 
 def show_main_menu():
     # show the main menu banner
@@ -33,3 +35,8 @@ show_title_card()
 while True:
     show_main_menu()
     choice = input("\nEnter one of the choices to proceed: ")
+
+    if(choice == 1):
+        user.view_account()
+    else:
+        break
