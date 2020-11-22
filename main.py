@@ -31,7 +31,7 @@ while True:
     show_main_menu()
     choice = input("\nEnter one of the choices to proceed: ")
 
-    if(choice == 1):
-        user.view_account()
+    if(choice == '1'):
+        user.view_account(int(choice))
     else:
         break
