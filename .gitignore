@@ -9,3 +9,5 @@
 .history/
 
 __pycache__/*
+
+.idea/*

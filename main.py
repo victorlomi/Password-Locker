@@ -12,6 +12,9 @@ password_locker = PasswordLocker()
 # Only show this card at the start of the program
 banners.show_title()
 
+# create password locker account
+password_locker.store_account()
+
 # main application loop
 while True:
     password_locker.show_main_menu()

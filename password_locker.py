@@ -18,3 +18,9 @@ class PasswordLocker():
 		print("Actions:")
 		print("  a.Add Account")
 		print("  b.Remove Account")
+
+	def store_account(self):
+		"""Store a account for the password locker"""
+		print("\nEnter your information to create a Password Locker Account:\n")
+		self.account.username = input("Username: ")
+		self.account.password = input("Password: ")
