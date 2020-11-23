@@ -39,8 +39,6 @@ else:
     else:
         password_locker.store_account()
 
-
-
 # main application loop
 while True:
     password_locker.show_main_menu(user.get_accounts()) # remove this later because it it prints at end
@@ -50,6 +48,9 @@ while True:
         user.view_add_account(choice)
     elif choice == 'b':
         user.view_remove_account(choice)
+    elif choice == 'c':
+        print("Quitting")
+        break
     elif user.get_accounts()[int(choice)-1]:
         user.view_account(int(choice))
     else:

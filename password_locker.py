@@ -20,6 +20,7 @@ class PasswordLocker():
 		print("Actions:")
 		print("  a.Add Account")
 		print("  b.Remove Account")
+		print("  c.Quit")
 
 	def store_account(self):
 		"""Store a account for the password locker"""
