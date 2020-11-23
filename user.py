@@ -2,6 +2,7 @@ from credentials import Credentials
 from banners import Banners
 from account import Account
 from password_locker import PasswordLocker
+import password_generator as password_gen
 
 
 class User():
@@ -37,18 +38,25 @@ class User():
 
         # respond to input
         if int(choice) == 1:
-            print("\nEnter your username and password:\n")
+            print("\n* Add Login Credentials: *\n")
             username = input("Enter your username: ")
-            password = input("Enter your password: ")
+
+            # check to generate password
+            password_choice = input("Do you want a generated password? (yes/no): ")
+            if password_choice.lower() == 'yes':
+                password = password_gen.generate_password()
+            elif password_choice.lower() == 'no':
+                password = input("Enter your password: ")
+
             self.credentials.accounts[account_name] = Account(username, password)
             self.view_account(index)
         elif int(choice) == 2:
-            print("\nHere are your login credentials\n")
+            print("\n* Check Login Credentials: *\n")
             print(f"username: {self.credentials.accounts[account_name].username}")
             print(f"password: {self.credentials.accounts[account_name].password}")
             self.view_account(index)
         elif int(choice) == 3:
-            print("Going back")
+            print("* Going Back *")
             # self.password_locker.show_main_menu(self.get_accounts)
 
     def view_add_account(self):
