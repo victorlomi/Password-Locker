@@ -80,7 +80,8 @@ class User():
         elif account_to_add == '4':
             self.credentials.add_account(self.choices[3], Account())
         elif account_to_add == '5':
-            print("You chose the other option")
+            account_name = input("\nEnter the name of the platform: ")
+            self.credentials.add_account(account_name, Account())
         else:
             print("Invalid choice")
 
