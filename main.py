@@ -17,10 +17,14 @@ password_locker.store_account()
 
 # main application loop
 while True:
-    password_locker.show_main_menu(user.get_accounts())
+    password_locker.show_main_menu(user.get_accounts()) # remove this later because it it prints at end
     choice = input("\nEnter one of the choices to proceed: ")
 
-    if user.get_accounts()[int(choice)-1]:
+    if choice == 'a':
+        user.view_add_account(choice)
+    elif choice == 'b':
+        user.view_add_account(choice)
+    elif user.get_accounts()[int(choice)-1]:
         user.view_account(int(choice))
     else:
         break

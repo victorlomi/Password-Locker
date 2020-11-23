@@ -1,6 +1,5 @@
 import random
 
-
 def get_random_letter():
     """Get a random letter from the alphabet"""
     letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
@@ -10,7 +9,6 @@ def get_random_letter():
     random_index = random.randint(0, len(letters)-1)
     return letters[random_index]
 
-
 def get_random_symbol():
     """Get a random symbol from this list[@, $, #, *, -]"""
     symbols = ["@", "$", "#", "*", "-"]
@@ -18,11 +16,10 @@ def get_random_symbol():
 
     return symbols[random_index]
 
-
 def generate_password():
     """Generate a random password for the user"""
     password = ""
-    for i in range(10):
+    for i in range(5):
         password += str(get_random_symbol())
         password += str(random.randint(0, 10000))
         password += str(get_random_letter())

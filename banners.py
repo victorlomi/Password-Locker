@@ -19,3 +19,10 @@ class Banners():
         print("\n****************************************************")
         print(f"******************* {title.title()} *********************")
         print("****************************************************")
+
+    def show_choices(self, choice):
+        if choice == 'a':
+            self.show_account("add account")
+        else:
+            self.show_account("remove account")
+

@@ -4,7 +4,6 @@ from account import Account
 from password_locker import PasswordLocker
 import password_generator as password_gen
 
-
 class User():
     """Handle user interaction with credentials"""
 
@@ -59,10 +58,12 @@ class User():
             print("* Going Back *")
             # self.password_locker.show_main_menu(self.get_accounts)
 
-    def view_add_account(self):
+    def view_add_account(self, choice):
         """View the prompt for adding an account"""
-        pass
+        self.banners.show_choices(choice)
+
 
     def view_remove_account(self):
         """View the prompt for removing an account"""
         pass
+
