@@ -14,8 +14,16 @@ def get_random_letter():
 def get_random_symbol():
     """Get a random symbol from this list[@, $, #, *, -]"""
     symbols = ["@", "$", "#", "*", "-"]
+    random_index = random.randint(0, len(symbols)-1)
+
+    return symbols[random_index]
 
 
 def generate_password():
     """Generate a random password for the user"""
-    pass
+    password = ""
+    for i in range(10):
+        password += str(get_random_symbol())
+        password += str(random.randint(0, 10000))
+        password += str(get_random_letter())
+    return password

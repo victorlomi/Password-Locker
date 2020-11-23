@@ -27,4 +27,3 @@ class PasswordLocker():
 		self.account.username = input("Username: ")
 		self.account.password = input("Password: ")
 
-	
