@@ -12,6 +12,7 @@ class User():
         self.credentials = Credentials()
         self.banners = Banners()
         self.password_locker = PasswordLocker()
+        self.choices = ["instagram", "facebook", "twitch", "discord"]
 
     def get_account_name(self, index):
         account_keys = list(self.credentials.accounts.keys())
@@ -62,8 +63,12 @@ class User():
         """View the prompt for adding an account"""
         self.banners.show_choices(choice)
 
+        choice_number = 0
+        for choice_number in range(len(self.choices)):
+            print(f"  {choice_number+1}.{self.choices[choice_number].title()}")
+        print(f"  {choice_number+2}.Other")
 
-    def view_remove_account(self):
+    def view_remove_account(self, choice):
         """View the prompt for removing an account"""
         pass
 

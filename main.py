@@ -23,7 +23,7 @@ while True:
     if choice == 'a':
         user.view_add_account(choice)
     elif choice == 'b':
-        user.view_add_account(choice)
+        user.view_remove_account(choice)
     elif user.get_accounts()[int(choice)-1]:
         user.view_account(int(choice))
     else:
