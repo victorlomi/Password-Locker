@@ -68,6 +68,23 @@ class User():
             print(f"  {choice_number+1}.{self.choices[choice_number].title()}")
         print(f"  {choice_number+2}.Other")
 
+        # add the account to the account list
+        account_to_add = input("\nEnter one of the choices to proceed: ")
+
+        if account_to_add == '1':
+            self.credentials.add_account(self.choices[0], Account())
+        elif account_to_add == '2':
+            self.credentials.add_account(self.choices[1], Account())
+        elif account_to_add == '3':
+            self.credentials.add_account(self.choices[2], Account())
+        elif account_to_add == '4':
+            self.credentials.add_account(self.choices[3], Account())
+        elif account_to_add == '5':
+            print("You chose the other option")
+        else:
+            print("Invalid choice")
+
+
     def view_remove_account(self, choice):
         """View the prompt for removing an account"""
         pass
