@@ -6,7 +6,7 @@ from banners import Banners
 from password_locker import PasswordLocker
 
 def get_stored_user():
-    """Get user data if it's stored otherwise create a user account"""
+    """Get user data if it's stored otherwise create a user account."""
     try:
         userdata_file = open(f"users/{password_locker.account.username}.pkl", "rb")
         stored_account = pickle.load(userdata_file)
@@ -24,7 +24,7 @@ def get_stored_user():
         userdata_file.close()
 
 def get_stored_accounts():
-    """Get the accounts associated with the user"""
+    """Get the accounts associated with the user."""
     try:
         accounts_file = open(f"accounts/{password_locker.account.username}.pkl", "rb")
         stored_account = pickle.load(accounts_file)
@@ -33,7 +33,7 @@ def get_stored_accounts():
         pass
 
 def store_accounts():
-    """Store the accounts in a serialized file"""
+    """Store the accounts in a serialized file."""
     accounts_file = open(f"accounts/{password_locker.account.username}.pkl", "wb")
     for key in user.credentials.accounts:
         pickle.dump(user.credentials.accounts, accounts_file)

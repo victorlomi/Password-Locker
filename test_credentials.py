@@ -14,12 +14,11 @@ class TestCredentials(unittest.TestCase):
         self.assertTrue("facebook" in credentials.accounts)
     
     def test_remove_account(self):
-        """Test that an account can be removed"""
+        """Test that an account can be removed."""
         credentials = Credentials()
         credentials.remove_account("twitter")
 
         self.assertFalse("twitter" in credentials.accounts)
-
 
 unittest.main()
 

@@ -4,25 +4,27 @@ from account import Account
 from password_locker import PasswordLocker
 import password_generator as password_gen
 
-class User():
-    """Handle user interaction with credentials"""
+class User:
+    """Handle user interaction with credentials."""
 
     def __init__(self):
-        """Store credentials and make banners instance"""
+        """Store credentials and make banners instance."""
         self.credentials = Credentials()
         self.banners = Banners()
         self.password_locker = PasswordLocker()
         self.choices = ["instagram", "facebook", "twitch", "discord"]
 
     def get_account_name(self, index):
+        """Get the name of the account based on an the index of the keys."""
         account_keys = list(self.credentials.accounts.keys())
         return account_keys[index]
 
     def get_accounts(self):
+        """Get a list of the accounts the user has."""
         return list(self.credentials.accounts.keys())
 
     def view_account(self, index):
-        """View a specific account's details and actions"""
+        """View a specific account's details and actions."""
         account_name = self.get_account_name(index - 1)
         account = self.credentials.accounts[account_name]
 
@@ -60,13 +62,13 @@ class User():
             # self.password_locker.show_main_menu(self.get_accounts)
 
     def view_add_account(self, choice):
-        """View the prompt for adding an account"""
+        """View the prompt for adding an account."""
         self.banners.show_choices(choice)
 
         choice_number = 0
         for choice_number in range(len(self.choices)):
-            print(f"  {choice_number+1}.{self.choices[choice_number].title()}")
-        print(f"  {choice_number+2}.Other")
+            print(f"  {choice_number + 1}.{self.choices[choice_number].title()}")
+        print(f"  {choice_number + 2}.Other")
 
         # add the account to the account list
         account_to_add = input("\nEnter one of the choices to proceed: ")
@@ -85,14 +87,13 @@ class User():
         else:
             print("Invalid choice")
 
-
     def view_remove_account(self, choice):
-        """View the prompt for removing an account"""
+        """View the prompt for removing an account."""
         self.banners.show_choices(choice)
         accounts = self.get_accounts()
 
         for i in range(len(accounts)):
-            print(f"  {i+1}.{accounts[i]}")
+            print(f"  {i + 1}.{accounts[i]}")
         print("  a. Go back")
 
         account_to_remove = input("\nEnter one of the choices to proceed: ")
@@ -100,6 +101,4 @@ class User():
         if account_to_remove == 'a':
             print("* Going Back *")
         else:
-            self.credentials.remove_account(self.get_account_name(int(account_to_remove)-1))
-
-
+            self.credentials.remove_account(self.get_account_name(int(account_to_remove) - 1))
