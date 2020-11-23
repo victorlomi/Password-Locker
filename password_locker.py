@@ -26,3 +26,5 @@ class PasswordLocker():
 		print("\nEnter your information to create a Password Locker Account:\n")
 		self.account.username = input("Username: ")
 		self.account.password = input("Password: ")
+
+	
