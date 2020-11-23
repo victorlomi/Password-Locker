@@ -7,12 +7,14 @@ class PasswordLocker():
 		self.banners = Banners()
 		self.account = Account()
 
-	def show_main_menu(self):
+	def show_main_menu(self, account_list):
 		# show the main menu banner
 		self.banners.show_main_menu()
 
 		# print out the available accounts
 		print("Accounts:")
+		for i in range(len(account_list)):
+			print(f"  {i+1}.{account_list[i].title()}")
 
 		# print out the available actions
 		print("Actions:")

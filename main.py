@@ -17,10 +17,10 @@ password_locker.store_account()
 
 # main application loop
 while True:
-    password_locker.show_main_menu()
+    password_locker.show_main_menu(user.get_accounts())
     choice = input("\nEnter one of the choices to proceed: ")
 
-    if(choice == '1'):
+    if user.get_accounts()[int(choice)-1]:
         user.view_account(int(choice))
     else:
         break
