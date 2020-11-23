@@ -13,7 +13,33 @@ password_locker = PasswordLocker()
 banners.show_title()
 
 # create password locker account
-password_locker.store_account()
+# password_locker.store_account()
+user_file = "user.txt"
+
+print("\n* Enter your information to Login *:\n")
+password_locker.account.username = input("Username: ")
+
+# check if user already has account
+try:
+    with open(user_file) as f_obj:
+        stored_data = f_obj.readlines()
+        stored_username = stored_data[0].strip()
+        stored_password = stored_data[1].strip()
+except FileNotFoundError:
+    with open(user_file, 'w') as f_obj:
+        password_locker.account.password = input("Password: ")
+        f_obj.write(f"{password_locker.account.username}\n{password_locker.account.password}")
+else:
+    password_locker.account.password = input("Password: ")
+
+    if password_locker.account.password == stored_password:
+        print(f"\n* Welcome back {stored_username} *")
+        password_locker.account.username = stored_username
+        password_locker.account.password = stored_password
+    else:
+        password_locker.store_account()
+
+
 
 # main application loop
 while True:
