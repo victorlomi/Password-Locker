@@ -88,5 +88,18 @@ class User():
 
     def view_remove_account(self, choice):
         """View the prompt for removing an account"""
-        pass
+        self.banners.show_choices(choice)
+        accounts = self.get_accounts()
+
+        for i in range(len(accounts)):
+            print(f"  {i+1}.{accounts[i]}")
+        print("  a. Go back")
+
+        account_to_remove = input("\nEnter one of the choices to proceed: ")
+
+        if account_to_remove == 'a':
+            print("* Going Back *")
+        else:
+            self.credentials.remove_account(self.get_account_name(int(account_to_remove)))
+
 
