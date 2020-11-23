@@ -100,6 +100,6 @@ class User():
         if account_to_remove == 'a':
             print("* Going Back *")
         else:
-            self.credentials.remove_account(self.get_account_name(int(account_to_remove)))
+            self.credentials.remove_account(self.get_account_name(int(account_to_remove)-1))
 
 
