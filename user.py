@@ -1,5 +1,7 @@
 from credentials import Credentials
 from banners import Banners
+from account import Account
+from password_locker import PasswordLocker
 
 class User():
     """Handle user interaction with credentials"""
@@ -8,6 +10,7 @@ class User():
         """Store credentials and make banners instance"""
         self.credentials = Credentials()
         self.banners = Banners()
+        self.password_locker = PasswordLocker()
 
     def get_account_name(self, index):
         account_keys = list(self.credentials.accounts.keys())
@@ -30,11 +33,17 @@ class User():
 
         # respond to input
         if(int(choice) == 1):
-            print("Enter your username and password")
+            print("\nEnter your username and password:\n")
+            username = input("Enter your username: ")
+            password = input("Enter your password: ")
+            self.credentials.accounts[account_name] = Account(username, password)
         elif(int(choice) == 2):
-            print("Here are your login credentials")
+            print("\nHere are your login credentials\n")
+            print(f"username: {self.credentials.accounts[account_name].username}")
+            print(f"password: {self.credentials.accounts[account_name].password}")
         elif(int(choice) == 3):
             print("Going back")
+            self.password_locker.show_main_menu()
 
 
     def view_add_account(self):
