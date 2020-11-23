@@ -5,16 +5,15 @@ from user import User
 from banners import Banners
 from password_locker import PasswordLocker
 
-
-# check if user already has account
 def get_stored_user():
+    """Get user data if it's stored otherwise create a user account"""
     try:
-        user_file = open(f"users/{password_locker.account.username}.pkl", "rb")
-        stored_account = pickle.load(user_file)
+        userdata_file = open(f"users/{password_locker.account.username}.pkl", "rb")
+        stored_account = pickle.load(userdata_file)
     except FileNotFoundError:
-        user_file = open(f"users/{password_locker.account.username}.pkl", "wb")
+        userdata_file = open(f"users/{password_locker.account.username}.pkl", "wb")
         password_locker.account.password = input("Password: ")
-        pickle.dump(password_locker.account, user_file)
+        pickle.dump(password_locker.account, userdata_file)
     else:
         password_locker.account.password = input("Password: ")
 
@@ -22,11 +21,10 @@ def get_stored_user():
             print(f"\n* Welcome back {stored_account.username} *")
             password_locker.account = stored_account
 
-        user_file.close()
+        userdata_file.close()
 
-
-# try to load in saved accounts
 def get_stored_accounts():
+    """Get the accounts associated with the user"""
     try:
         accounts_file = open(f"accounts/{password_locker.account.username}.pkl", "rb")
         stored_account = pickle.load(accounts_file)
@@ -34,38 +32,31 @@ def get_stored_accounts():
     except FileNotFoundError:
         pass
 
-
 def store_accounts():
-    # Store the user's accounts
+    """Store the accounts in a serialized file"""
     accounts_file = open(f"accounts/{password_locker.account.username}.pkl", "wb")
     for key in user.credentials.accounts:
         pickle.dump(user.credentials.accounts, accounts_file)
     accounts_file.close()
 
-
-# Initialize import parts of the program
+# Initialize objects
 banners = Banners()
 credentials = Credentials()
 user = User()
 password_locker = PasswordLocker()
 
-# Only show this card at the start of the program
+# Show the title card(Only show this card at the start of the program)
 banners.show_title()
 
-# create password locker account
-# password_locker.store_account()
-user_file = "user.txt"
-
+# Create/load Password Locker account
 print("\n* Enter your information to Login *:\n")
 password_locker.account.username = input("Username: ")
 
-# load users and accounts
 get_stored_user()
 get_stored_accounts()
 
-# main application loop
 while True:
-    password_locker.show_main_menu(user.get_accounts())  # remove this later because it it prints at end
+    password_locker.show_main_menu(user.get_accounts())
     choice = input("\nEnter one of the choices to proceed: ")
 
     if choice == 'a':
