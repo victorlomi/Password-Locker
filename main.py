@@ -1,3 +1,5 @@
+import pickle
+
 from credentials import Credentials
 from user import User
 from banners import Banners
@@ -21,23 +23,28 @@ password_locker.account.username = input("Username: ")
 
 # check if user already has account
 try:
-    with open(user_file) as f_obj:
-        stored_data = f_obj.readlines()
-        stored_username = stored_data[0].strip()
-        stored_password = stored_data[1].strip()
+    user_file = open(f"users/{password_locker.account.username}.pkl", "rb")
+    stored_account = pickle.load(user_file)
 except FileNotFoundError:
-    with open(user_file, 'w') as f_obj:
-        password_locker.account.password = input("Password: ")
-        f_obj.write(f"{password_locker.account.username}\n{password_locker.account.password}")
+    user_file = open(f"users/{password_locker.account.username}.pkl", "wb")
+    password_locker.account.password = input("Password: ")
+    pickle.dump(password_locker.account, user_file)
 else:
     password_locker.account.password = input("Password: ")
 
-    if password_locker.account.password == stored_password:
-        print(f"\n* Welcome back {stored_username} *")
-        password_locker.account.username = stored_username
-        password_locker.account.password = stored_password
-    else:
-        password_locker.store_account()
+    if password_locker.account.password == stored_account.password:
+        print(f"\n* Welcome back {stored_account.username} *")
+        password_locker.account = stored_account
+
+    user_file.close()
+
+# try to load in saved accounts
+try:
+    accounts_file = open(f"accounts/{password_locker.account.username}.pkl", "rb")
+    stored_account = pickle.load(accounts_file)
+    user.credentials.accounts = stored_account
+except FileNotFoundError:
+    pass
 
 # main application loop
 while True:
@@ -53,5 +60,10 @@ while True:
         break
     elif user.get_accounts()[int(choice)-1]:
         user.view_account(int(choice))
-    else:
-        break
+
+    # Store the user's accounts
+    accounts_file = open(f"accounts/{password_locker.account.username}.pkl", "wb")
+    for key in user.credentials.accounts:
+        pickle.dump(user.credentials.accounts, accounts_file)
+    accounts_file.close()
+
